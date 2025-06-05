@@ -24,7 +24,8 @@ class Message(BaseModel):
 class Response(BaseModel):
     text: str
 
-# POST endpoint
+# Root endpoint
+@app.post("/", response_model=Response)
 @app.post("/api/messages", response_model=Response)
 async def process_message(message: Message):
     if message.text.lower() == "hi":
