@@ -36,10 +36,9 @@ async def process_message(message: Message):
 @app.on_event("startup")
 async def startup_event():
     try:
-        auth_token = os.getenv("NGROK_AUTH_TOKEN")
-        if auth_token:
-            conf.get_default().auth_token = auth_token
-
+        # Set ngrok authtoken directly
+        conf.get_default().auth_token = "2xfuRlz9XcdZAjzlYNrg4ilQWMe_5EJmbfiR9P1qmNYcWGYrP"
+        
         public_url = ngrok.connect(8000)
         print(f"🌐 ngrok tunnel opened at: {public_url}")
     except Exception as e:
